@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Shop</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()" onkeyup="handleKey(event)">
+    <div class="container">
+        <h1>Welcome to my bookshop :)</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th colspan="2">Actions
+                    </th>
+                    <td class="add-book"><a href="#" onclick="toggleAddBookModal()"><img src="img/add-book.png"
+                                alt="Add Book"></a></td>
+                </tr>
+            </thead>
+            <tbody class="books-table"></tbody>
+        </table>
+    </div>
+    <div class="modal hide">
+        <div class="new-book-modal hide">
+            <button class="btn-close" onclick="toggleAddBookModal()">&#10006</button>
+            <label for="new-book-name">Book Name:</label>
+            <input type="text" name="new-book-name" autofocus>
+
+            <label for="new-book-price">Price:</label>
+            <input type="number" name="new-book-price">
+            <span class="currency">$</span>
+
+            <button class="btn btn-add-submit" onclick="onAddBook()">Add Book</button>
+            <button class="btn btn-update-submit hide" onclick="onSubmitUpdate()">Update</button>
+        </div>
+        <div class="book-details hide">
+            <button class="btn-close" onclick="toggleDetailsModal()">&#10006</button>
+            <h1></h1>
+            <img src="" />
+            <h3>Price: <span class="price"></span><span class="currency">$</span></h3>
+        </div>
+    </div>
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/book-service.js"></script>
+    <script src="js/book-controller.js"></script>
+</body>
+
+</html>
