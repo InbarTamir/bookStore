@@ -11,10 +11,10 @@ function renderBooks() {
         <tr>
             <td>${book.id}</td>
             <td class="book-title">${book.name}</td>
-            <td>${book.price}\$</td>
-            <td class="btns"><button class="btn btn-read" onclick="onBookDetails(${book.id})">Read</button></td>
-            <td class="btns"><button class="btn btn-update" onclick="onUpdateBook(${book.id})">Update</button></td>
-            <td class="btns"><button class="btn btn-delete" onclick="onRemoveBook(${book.id})">Delete</button></td>
+            <td>${book.price}<span data-trans="currency-sign">$</span></td>
+            <td class="btns"><button class="btn btn-read" onclick="onBookDetails(${book.id})" data-trans="read">Read</button></td>
+            <td class="btns"><button class="btn btn-update" onclick="onUpdateBook(${book.id})" data-trans="update">Update</button></td>
+            <td class="btns"><button class="btn btn-delete" onclick="onRemoveBook(${book.id})" data-trans="delete">Delete</button></td>
         </tr>
         `;
     });
@@ -67,6 +67,13 @@ function onBookDetails(bookId) {
     document.querySelector('.book-details h1').innerText = currBook.name;
     document.querySelector('.book-details img').src = currBook.imgUrl;
     document.querySelector('.book-details .price').innerText = currBook.price;
+}
+
+function onSetLang(lang) {
+    setLang(lang);
+    if (lang === 'he') document.body.classList.add('rtl')
+    else document.body.classList.remove('rtl')
+    doTrans();
 }
 
 function toggleAddBookModal() {
